@@ -11,6 +11,8 @@ console.log(webhook)
 app.use(bodyParser.json());
 
 app.post('/heroku-webhook', (req, res) => {
+  try {
+
   // Extract relevant data from Heroku webhook payload
   const herokuEventData = req.body.data;
   const appName = herokuEventData.app.name;
@@ -52,6 +54,10 @@ app.post('/heroku-webhook', (req, res) => {
       console.error('Error sending Discord webhook:', error);
       res.sendStatus(500);
     });
+        
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 app.listen(port, () => {
