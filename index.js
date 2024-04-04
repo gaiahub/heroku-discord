@@ -47,7 +47,6 @@ app.post('/heroku-webhook', (req, res) => {
   // Send payload to Discord webhook
   axios.post(
     `${webhook}`, 
-    header,
     discordPayload)
     .then(() => res.sendStatus(200))
     .catch(error => {
