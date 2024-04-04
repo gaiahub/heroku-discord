@@ -18,6 +18,7 @@ app.post('/heroku-webhook', (req, res) => {
 
   const message = `Event ID => ${herokuEventMetada.event.id}\nEvent Type => ${herokuEventMetada.event.include}\nTriggered by => ${herokuEventData.user.email}\nStatus => ${herokuEventData.status}`
 
+  console.log(herokuEventData);
 
   // Transform data to match Discord webhook payload structure
   const discordPayload = {
